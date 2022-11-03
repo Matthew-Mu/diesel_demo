@@ -3,7 +3,7 @@ use diesel::prelude::*;
 use diesel_demo::*;
 
 fn main() {
-    use self::schema::post::dsl::*;
+    use self::schema::posts::dsl::*;
 
     let connection = &mut establish_connection();
     let results = posts
@@ -14,7 +14,7 @@ fn main() {
     
     println!("Displaying {} posts", results.len());
     for post in results {
-        println!("{}", post_title);
+        println!("{}", post.title);
         println!("----------\n");
         println!("{}", post.body);
     }
