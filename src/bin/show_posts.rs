@@ -7,6 +7,7 @@ fn main() {
 
     let connection = &mut establish_connection();
     let results = posts
+    // .filter filters out unpublished posts
         .filter(published.eq(true))
         .limit(5)
         .load::<Post>(connection)
@@ -16,6 +17,6 @@ fn main() {
     for post in results {
         println!("{}", post.title);
         println!("----------\n");
-        println!("{}", post.body);
+        println!("{}\n", post.body);
     }
 }
